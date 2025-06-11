@@ -44,3 +44,23 @@ body {
   object-fit: cover;
   border-radius: 16px;
 }
+
+@keyframes rosa-pulsante {
+  0%   { color: #ffb6c1; }  /* rosa claro */
+  25%  { color: #ff69b4; }  /* rosa médio */
+  50%  { color: #ff1493; }  /* rosa forte */
+  75%  { color: #ff69b4; }
+  100% { color: #ffb6c1; }
+}
+
+.texto-fofo {
+  font-family: 'Comic Sans MS', 'Segoe Script', cursive;
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  animation: rosa-pulsante 5s ease-in-out infinite;
+}
+
+.texto-fofo {
+  font-family: 'Pacifico', cursive;
+}

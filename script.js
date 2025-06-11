@@ -1,22 +1,19 @@
-const dataInicio = new Date("2023-10-01T22:00:00");
+function pluralizar(valor, singular, plural) {
+  return `${valor} ${valor === 1 ? singular : plural}`;
+}
 
 function atualizarContador() {
+  const inicioNamoro = new Date('2023-10-01T22:00:00'); // ajuste a data do namoro
   const agora = new Date();
-  let diff = agora - dataInicio;
 
-  const segundos = Math.floor(diff / 1000);
-  const minutos = Math.floor(segundos / 60);
-  const horas = Math.floor(minutos / 60);
-  const dias = Math.floor(horas / 24);
+  let anos = agora.getFullYear() - inicioNamoro.getFullYear();
+  let meses = agora.getMonth() - inicioNamoro.getMonth();
+  let dias = agora.getDate() - inicioNamoro.getDate();
 
-  let anos = agora.getFullYear() - dataInicio.getFullYear();
-  let meses = agora.getMonth() - dataInicio.getMonth();
-  let diaMes = agora.getDate() - dataInicio.getDate();
-
-  if (diaMes < 0) {
+  if (dias < 0) {
     meses--;
-    const mesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0);
-    diaMes += mesAnterior.getDate();
+    const ultimoMes = new Date(agora.getFullYear(), agora.getMonth(), 0);
+    dias += ultimoMes.getDate();
   }
 
   if (meses < 0) {
@@ -24,19 +21,22 @@ function atualizarContador() {
     meses += 12;
   }
 
-  const h = (agora.getHours() - dataInicio.getHours() + 24) % 24;
-  const m = (agora.getMinutes() - dataInicio.getMinutes() + 60) % 60;
-  const s = (agora.getSeconds() - dataInicio.getSeconds() + 60) % 60;
+  const horas = agora.getHours();
+  const minutos = agora.getMinutes();
+  const segundos = agora.getSeconds();
 
-  document.getElementById("contador").innerHTML = `
-    <span>💖 ${anos} ano(s)</span>
-    <span> ${meses} mês(es)</span>
-    <span> ${diaMes} dia(s)</span><br/>
-    <span>⏰ ${h.toString().padStart(2, "0")}h</span> :
-    <span>${m.toString().padStart(2, "0")}min</span> :
-    <span>${s.toString().padStart(2, "0")}s</span>
-  `;
+  const texto = [
+    pluralizar(anos, 'ano', 'anos'),
+    pluralizar(meses, 'mês', 'meses'),
+    pluralizar(dias, 'dia', 'dias'),
+    pluralizar(horas, 'hora', 'horas'),
+    pluralizar(minutos, 'minuto', 'minutos'),
+    pluralizar(segundos, 'segundo', 'segundos')
+  ].join(', ');
+
+  document.getElementById('contador').textContent = texto;
 }
 
+// Atualiza a cada segundo
 setInterval(atualizarContador, 1000);
 atualizarContador();
