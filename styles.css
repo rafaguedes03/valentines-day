@@ -1,0 +1,46 @@
+body {
+  background-image: url("img/fundo.jpg");
+  background-size: cover; /* cobre toda a tela */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* para não rolar junto com a página */
+  color: #333;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+
+#contador {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #d63384; /* Rosa Bootstrap */
+  transition: all 0.3s ease-in-out;
+  line-height: 1.6;
+}
+
+#contador span {
+  display: inline-block;
+  margin: 0 4px;
+  animation: pulso 2s infinite;
+}
+
+@keyframes pulso {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.carousel-inner img {
+  height: 300px;
+  object-fit: cover;
+  border-radius: 16px;
+}
