@@ -4,7 +4,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed; /* para não rolar junto com a página */
-  color: #333;
+  color: #fff;
 }
 
 .container {
